@@ -11,7 +11,7 @@ class SCENE
 {
     public:
     SCENE();
-    void run();
+    vector<int> run();
     void loadDescription(string filePath);
     int makeChoiceSnM();
     int makeChoiceA();
@@ -30,21 +30,20 @@ class SCENE
 }
 };
 
-void SCENE::run()
+vector<int> SCENE::run()
 {
+    vector<int> points = {0,0};
     loadDescription(sceneDescriptionA);
     int choice;
     if (choiceTypeOrder)
     {
         choice = makeChoiceA();
-        decideChoiceValue(choice);
-        //Player.affection = above
+        points[0] = decideChoiceValue(choice);
     }
     else
     {
         choice = makeChoiceSnM();
-        decideChoiceValue(choice);
-        //Player.SnmValue = above
+        points[1] = decideChoiceValue(choice);
 
     }
 
@@ -52,16 +51,14 @@ void SCENE::run()
     if (choiceTypeOrder)
     {
         makeChoiceSnM();
-        decideChoiceValue(choice);
-        //Player.SnmValue = above
+        points[1] = decideChoiceValue(choice);
     }
     else
     {
         makeChoiceA();
-        decideChoiceValue(choice);
-        //Player.affection = above
+        points[0] = decideChoiceValue(choice);
     }
-
+    return points;
 }
 
 void SCENE::loadDescription(string filePath)
