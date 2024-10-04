@@ -5,7 +5,7 @@
 #include <vector>
 using namespace std;
 
-class Player
+class PLAYER
 {
     public:
     int affectionValue = 5;

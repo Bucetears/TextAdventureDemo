@@ -19,7 +19,7 @@ class SCENE
     string sceneDescriptionA;
     string sceneDescriptionB;
     vector<int> choiceValues;
-    bool choiceTypeOrder;
+    bool choiceTypeOrder; //If true makeChoiceA will go first.
 
     SCENE(string A, string B, vector<int> C, bool D)
 {
