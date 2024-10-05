@@ -17,8 +17,6 @@ class SCENE
     string sceneDescriptionB = " ";
     vector<int> choiceValues = {1};
     bool choiceTypeOrder = true; //If true makeChoiceA will go first.
-
-
 };
 
 

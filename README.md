@@ -8,7 +8,7 @@ Currently the program loads text files which provide the choices, the player has
 
 
 # Demo Video Below
-Software Demo Video Link (http://youtube.link.goes.here)
+Software Demo Video Link (https://youtu.be/8RkR2LHFG7o)
 
 # Development Environment
 I coded this project in VSCode with using Mingw-64 for the complier. I also used Github to save and upload the repository.
