@@ -21,18 +21,18 @@ void calculateEnding(int affection, int snmValue) {
     SCENE scene;
     if (affection > 5) {
         if(snmValue > (10/3) * 2){
-            scene.loadDescription("HaS.txt");}
+            scene.loadDescription("C:\\Users\\Cecel\\OneDrive\\Documents\\school\\Fall 2024\\CSE 310\\Module 1\\TextAdventure\\HaS.txt");}
         else if (snmValue > 10/3){
-            scene.loadDescription("HaN.txt");}
+            scene.loadDescription("C:\\Users\\Cecel\\OneDrive\\Documents\\school\\Fall 2024\\CSE 310\\Module 1\\TextAdventure\\HaN.txt");}
         else{
-            scene.loadDescription("HaM.txt");}}
+            scene.loadDescription("C:\\Users\\Cecel\\OneDrive\\Documents\\school\\Fall 2024\\CSE 310\\Module 1\\TextAdventure\\HaM.txt");}}
     else{   
         if(snmValue > (10/3) * 2){
-            scene.loadDescription("LaS.txt");}
+            scene.loadDescription("C:\\Users\\Cecel\\OneDrive\\Documents\\school\\Fall 2024\\CSE 310\\Module 1\\TextAdventure\\LaS.txt");}
         else if (snmValue > 10/3){
-            scene.loadDescription("LaN.txt");}
+            scene.loadDescription("C:\\Users\\Cecel\\OneDrive\\Documents\\school\\Fall 2024\\CSE 310\\Module 1\\TextAdventure\\LaN.txt");}
         else{
-            scene.loadDescription("LaM.txt");}
+            scene.loadDescription("C:\\Users\\Cecel\\OneDrive\\Documents\\school\\Fall 2024\\CSE 310\\Module 1\\TextAdventure\\LaM.txt");}
             }    
 }
 
