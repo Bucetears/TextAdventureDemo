@@ -16,19 +16,14 @@ class SCENE
     int makeChoiceSnM();
     int makeChoiceA();
     int decideChoiceValue(int decision);
-    string sceneDescriptionA;
-    string sceneDescriptionB;
-    vector<int> choiceValues;
-    bool choiceTypeOrder; //If true makeChoiceA will go first.
+    string sceneDescriptionA = " ";
+    string sceneDescriptionB = " ";
+    vector<int> choiceValues = {1};
+    bool choiceTypeOrder = true; //If true makeChoiceA will go first.
 
-    SCENE(string A, string B, vector<int> C, bool D)
-{
-    sceneDescriptionA = A;
-    sceneDescriptionB = B;
-    choiceValues = C;
-    choiceTypeOrder = D;
-}
+
 };
+
 
 vector<int> SCENE::run()
 {

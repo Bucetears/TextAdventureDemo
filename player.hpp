@@ -18,5 +18,4 @@ class PLAYER
 
 };
 
-
 #endif
