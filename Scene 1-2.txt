@@ -1,5 +1,5 @@
 Scene 1.B
 
 Choice:
-Choice Affection
-Choice Low Affection
+Option 1 Affection +
+Option 2 Low Affection -

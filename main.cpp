@@ -2,9 +2,8 @@
 #include <fstream>
 #include <string>
 #include <vector>
-#include "player.hpp"
-#include "scene.hpp"
 using namespace std;
+
 
 class SCENE
 {
@@ -14,17 +13,11 @@ class SCENE
     int makeChoiceSnM();
     int makeChoiceA();
     int decideChoiceValue(int decision);
-    string sceneDescriptionA;
-    string sceneDescriptionB;
-    vector<int> choiceValues;
-    bool choiceTypeOrder; //If true makeChoiceA will go first.
+    string sceneDescriptionA = " ";
+    string sceneDescriptionB = " ";
+    vector<int> choiceValues = {1};
+    bool choiceTypeOrder = true; //If true makeChoiceA will go first.
 
-    SCENE(string A, string B, vector<int> C, bool D){
-        sceneDescriptionA = A;
-        sceneDescriptionB = B;
-        choiceValues = C;
-        choiceTypeOrder = D;
-    };
 
 };
 
@@ -80,6 +73,7 @@ int SCENE::makeChoiceSnM()
 {
     int decision;
     cin >> decision;
+    cout << endl;
     if (decision > 3 || decision < 1) {
         cout << "Select a valid option";
         makeChoiceSnM();
@@ -91,6 +85,7 @@ int SCENE::makeChoiceA()
 {
     int decision;
     cin >> decision;
+    cout << endl;
     if (decision > 2 || decision < 1) {
         cout << "Select a valid option";
         makeChoiceA();
@@ -103,6 +98,21 @@ int SCENE::decideChoiceValue(int decision)
     return choiceValues[decision];
 }
 
+
+class PLAYER
+{
+    public:
+    int affectionValue = 5;
+    int snmValue = 5;
+    void alterValues(vector<int> values)
+    {
+        affectionValue += values[0];
+        snmValue += values[1];
+    }
+
+};
+
+//-----------------------------------------------------------------------------------------//
 
 SCENE setUpScene(string sceneA, string sceneB, bool choiceOrder, vector<int> choiceValue)
 {
