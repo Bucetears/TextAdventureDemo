@@ -18,7 +18,7 @@ SCENE setUpScene(string sceneA, string sceneB, bool choiceOrder, vector<int> cho
 }
 
 void calculateEnding(int affection, int snmValue) {
-    SCENE scene
+    SCENE scene;
     if (affection > 5) {
         if(snmValue > (10/3) * 2){
             scene.loadDescription("HaS.txt");}
