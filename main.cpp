@@ -39,24 +39,32 @@ void calculateEnding(int affection, int snmValue) {
 
 vector<string> setUpDescriptorA()
 {
-    vector<string> descriptorsA = {"C:\\Users\\Cecel\\OneDrive\\Documents\\school\\Fall 2024\\CSE 310\\Module 1\\TextAdventure\\Scene 1-1.txt"};
+    vector<string> descriptorsA = {"C:\\Users\\Cecel\\OneDrive\\Documents\\school\\Fall 2024\\CSE 310\\Module 1\\TextAdventure\\Scene 1-1.txt", 
+    "C:\\Users\\Cecel\\OneDrive\\Documents\\school\\Fall 2024\\CSE 310\\Module 1\\TextAdventure\\Scene 2-1.txt",
+    "C:\\Users\\Cecel\\OneDrive\\Documents\\school\\Fall 2024\\CSE 310\\Module 1\\TextAdventure\\Scene 3-1.txt",
+    "C:\\Users\\Cecel\\OneDrive\\Documents\\school\\Fall 2024\\CSE 310\\Module 1\\TextAdventure\\Scene 4-1.txt",
+    "C:\\Users\\Cecel\\OneDrive\\Documents\\school\\Fall 2024\\CSE 310\\Module 1\\TextAdventure\\Scene 5-1.txt"};
     return descriptorsA;
 }
 
 vector<string> setUpDescriptorB()
 {
-    vector<string> descriptorsB = {"C:\\Users\\Cecel\\OneDrive\\Documents\\school\\Fall 2024\\CSE 310\\Module 1\\TextAdventure\\Scene 1-2.txt"};
+    vector<string> descriptorsB = {"C:\\Users\\Cecel\\OneDrive\\Documents\\school\\Fall 2024\\CSE 310\\Module 1\\TextAdventure\\Scene 1-2.txt",
+    "C:\\Users\\Cecel\\OneDrive\\Documents\\school\\Fall 2024\\CSE 310\\Module 1\\TextAdventure\\Scene 2-2.txt",
+    "C:\\Users\\Cecel\\OneDrive\\Documents\\school\\Fall 2024\\CSE 310\\Module 1\\TextAdventure\\Scene 3-2.txt",
+    "C:\\Users\\Cecel\\OneDrive\\Documents\\school\\Fall 2024\\CSE 310\\Module 1\\TextAdventure\\Scene 4-2.txt",
+    "C:\\Users\\Cecel\\OneDrive\\Documents\\school\\Fall 2024\\CSE 310\\Module 1\\TextAdventure\\Scene 5-2.txt"};
     return descriptorsB;
 }
 
 vector<bool> setUpChoiceOrder()
 {
-    vector<bool> choiceOrder = {false};
+    vector<bool> choiceOrder = {false, true, true, true, false};
     return choiceOrder;
 }
 
 vector<vector<int>> setUpChoiceValues(){
-    vector<vector<int>> choiceValues = {{1, 0, -1, 1, -1}, {}};
+    vector<vector<int>> choiceValues = {{1, 0, -1, 1, -1}, {0, -1, 1, 1,-1}, {-1, 1, 0, 1, -1}, {1, 0, -1, -1, 1}, {1, -1, 0, -1, 0}};
     return choiceValues;
 }
 

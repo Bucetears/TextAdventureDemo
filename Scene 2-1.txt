@@ -1,0 +1,4 @@
+Affection Choice
+
+1. Raise Affection
+2. Lower Affection

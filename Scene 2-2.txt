@@ -1,0 +1,5 @@
+SnM Choice
+
+Option 1 - N (0)
+Option 2 - M (-1)
+Option 3 - S (1)

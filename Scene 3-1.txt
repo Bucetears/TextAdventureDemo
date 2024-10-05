@@ -1,0 +1,3 @@
+Affection Choice
+1. Affection Up
+2. Affection Down
