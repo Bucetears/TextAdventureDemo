@@ -75,7 +75,7 @@ int SCENE::makeChoiceSnM()
     cin >> decision;
     cout << endl;
     if (decision > 3 || decision < 1) {
-        cout << "Select a valid option";
+        cout << "Select a valid option" << endl;
         makeChoiceSnM();
     }
     return (decision - 1);
@@ -87,7 +87,7 @@ int SCENE::makeChoiceA()
     cin >> decision;
     cout << endl;
     if (decision > 2 || decision < 1) {
-        cout << "Select a valid option";
+        cout << "Select a valid option" << endl;
         makeChoiceA();
     }
     return (decision + 2);
@@ -143,7 +143,7 @@ void calculateEnding(int affection, int snmValue) {
             }    
 }
 
-
+//-----------------------------------------------------------------------------------------------------------------------------------------------------//
 vector<string> setUpDescriptorA()
 {
     vector<string> descriptorsA = {"C:\\Users\\Cecel\\OneDrive\\Documents\\school\\Fall 2024\\CSE 310\\Module 1\\TextAdventure\\Scene 1-1.txt", 
@@ -174,6 +174,8 @@ vector<vector<int>> setUpChoiceValues(){
     vector<vector<int>> choiceValues = {{1, 0, -1, 1, -1}, {0, -1, 1, 1,-1}, {-1, 1, 0, 1, -1}, {1, 0, -1, -1, 1}, {1, -1, 0, -1, 0}};
     return choiceValues;
 }
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------//
 
 void run(vector<string> descriptorsA, vector<string> descriptorsB, vector<bool> choiceOrders, vector<vector<int>> choiceValues){
     PLAYER player;
