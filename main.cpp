@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include "player.hpp"
 #include "scene.hpp"
 using namespace std;
 
@@ -16,7 +17,8 @@ SCENE setUpScene(string sceneA, string sceneB, bool choiceOrder, vector<int> cho
     return scene;
 }
 
-void calculateEnding(int affection, int snmValue, SCENE scene) {
+void calculateEnding(int affection, int snmValue) {
+    SCENE scene
     if (affection > 5) {
         if(snmValue > (10/3) * 2){
             scene.loadDescription("HaS.txt");}
@@ -58,17 +60,23 @@ vector<vector<int>> setUpChoiceValues(){
     return choiceValues;
 }
 
+void run(vector<string> descriptorsA, vector<string> descriptorsB, vector<bool> choiceOrders, vector<vector<int>> choiceValues){
+    PLAYER player;
+    vector<int> points = {0,0};
+    for ( int i = 0; i < descriptorsA.size(); i++){
+        SCENE scene = setUpScene(descriptorsA[i], descriptorsB[i], choiceOrders[i], choiceValues[i]);
+        points = scene.run();
+        player.alterValues(points);
+    }
+    calculateEnding(player.affectionValue, player.snmValue);
+}
+
 
 int main() {
-    cout << "START";
-    SCENE scene = setUpScene("", "", true, {1});
-    cout << "SCENE IS SET UP!!";
-    //PLAYER player;
-    vector<int> points = {0,0};
-    points = scene.run();
-    cout << "SCENE IS RUN!";
-    //player.alterValues(points);
-    cout << "Affection Points: " << points[0] << endl;
-    cout << "SnM Points: " << points[1] << endl;
+    vector<string> descriptorsA = setUpDescriptorA();
+    vector<string> descriptorsB = setUpDescriptorB();
+    vector<bool> choiceOrders = setUpChoiceOrder();
+    vector<vector<int>> choiceValues = setUpChoiceValues();
+    run(descriptorsA, descriptorsB, choiceOrders, choiceValues);
     return 0;
 }
