@@ -1,0 +1,5 @@
+C:\Users\Cecel\OneDrive\Documents\school\Fall 2024\CSE 310\Module 1\TextAdventure\decisions\SceneCollection1.txt
+C:\Users\Cecel\OneDrive\Documents\school\Fall 2024\CSE 310\Module 1\TextAdventure\decisions\SceneCollection2.txt
+C:\Users\Cecel\OneDrive\Documents\school\Fall 2024\CSE 310\Module 1\TextAdventure\decisions\SceneCollection3.txt
+C:\Users\Cecel\OneDrive\Documents\school\Fall 2024\CSE 310\Module 1\TextAdventure\decisions\SceneCollection4.txt
+C:\Users\Cecel\OneDrive\Documents\school\Fall 2024\CSE 310\Module 1\TextAdventure\decisions\SceneCollection5.txt

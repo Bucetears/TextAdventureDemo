@@ -1,5 +1,12 @@
-SnM Choice
+“Anyways I can show you. Put away Poseidon, and we can play a game together.” Erik decided on the game for them to play together.
+“Poseidon can play too! He’s a smart boy.”
+“No, I don’t want octopus slime on my new controllers.”
+“Boo!” May pouted as she left to put Poseidon back in his aquarium. 
+Erik searched through all the games he bought. He needed to choose something that would be easy for someone like May. He highly doubted she would be any good at any of them, but that didn’t matter. He decided to pick out a racing game since she seemed to like cars. Granted her driving was horrific in real life, he was sure it would be even worse in gaming.
+“There I put Poseidon away! Now let’s play this game I guess. If it’s boring I won’t play with you anymore!”
+“If only I was that lucky.” Erik quipped back, a little proud of his attempt at humor.
+“Erik, have you thought about your life? You are like the exact opposite of lucky.” She pointed out before sitting down next to him.
 
-Option 1 M (-1)
-Option 2 S (+1)
-Option 3 N (0)
+1. You’re in control of my luck now (M)
+2. It’s changing for the better (S)
+3. That’s not my life anymore (N)

@@ -13,41 +13,40 @@ class SCENE
     int makeChoiceSnM();
     int makeChoiceA();
     int decideChoiceValue(int decision);
-    string sceneDescriptionA = " ";
-    string sceneDescriptionB = " ";
+    vector<string> sceneDescription = {"","",""};
     vector<int> choiceValues = {1};
     bool choiceTypeOrder = true; //If true makeChoiceA will go first.
+    vector<string> choiceScenes = {""};
 };
 
 
 vector<int> SCENE::run()
 {
     vector<int> points = {0,0};
-    loadDescription(sceneDescriptionA);
+    loadDescription(sceneDescription[0]); //This plays the first part of the scene
     int choice;
     if (choiceTypeOrder)
     {
-        choice = makeChoiceA();
+        choice = makeChoiceA(); //Choice with two options
         points[0] = decideChoiceValue(choice);
-    }
-    else
-    {
+        loadDescription(choiceScenes[choice]); //Plays the choice 
+        loadDescription(sceneDescription[1]); //This plays the second part of the scene
         choice = makeChoiceSnM();
         points[1] = decideChoiceValue(choice);
 
     }
-
-    loadDescription(sceneDescriptionB);
-    if (choiceTypeOrder)
-    {
-        makeChoiceSnM();
-        points[1] = decideChoiceValue(choice);
-    }
     else
     {
-        makeChoiceA();
+        choice = makeChoiceSnM(); //Choice with three options
+        points[1] = decideChoiceValue(choice);
+        loadDescription(choiceScenes[choice]); //Plays the choice 
+        loadDescription(sceneDescription[1]); //This plays the second part of the scene
+        choice = makeChoiceA();
         points[0] = decideChoiceValue(choice);
+
     }
+    loadDescription(choiceScenes[choice]); //Plays the choice 
+    loadDescription(sceneDescription[2]);
     return points;
 }
 
@@ -76,7 +75,15 @@ int SCENE::makeChoiceSnM()
         cout << "Select a valid option" << endl;
         makeChoiceSnM();
     }
-    return (decision - 1);
+    if (choiceTypeOrder)
+    {
+        return (decision + 1);
+    }
+    else
+    {
+        return (decision - 1);
+    }
+    
 }
 
 int SCENE::makeChoiceA()
@@ -88,14 +95,23 @@ int SCENE::makeChoiceA()
         cout << "Select a valid option" << endl;
         makeChoiceA();
     }
-    return (decision + 2);
+    if (choiceTypeOrder)
+    {
+        return (decision - 1);
+    }
+    else
+    {
+        return (decision + 2);
+    }
 }
 
 int SCENE::decideChoiceValue(int decision)
 {
     return choiceValues[decision];
+    
 }
 
+//---------------------------------------------------------------------------------------------------------------
 
 class PLAYER
 {
@@ -112,86 +128,96 @@ class PLAYER
 
 //-----------------------------------------------------------------------------------------//
 
-SCENE setUpScene(string sceneA, string sceneB, bool choiceOrder, vector<int> choiceValue)
+SCENE setUpScene(string sceneA, string sceneB, string sceneC, bool choiceOrder, vector<int> choiceValue, vector<string> choiceScenes)
 {
     SCENE scene;
-    scene.sceneDescriptionA = sceneA;
-    scene.sceneDescriptionB = sceneB;
+    scene.sceneDescription[0] = sceneA;
+    scene.sceneDescription[1] = sceneB;
+    scene.sceneDescription[2] = sceneC;
     scene.choiceTypeOrder = choiceOrder;
+    
     scene.choiceValues = choiceValue;
+    scene.choiceScenes = choiceScenes;
     return scene;
 }
 
-void calculateEnding(int affection, int snmValue) {
+//Calculates ending based on SNM points and Affection points. 
+void calculateEnding(int affection, int snmValue, vector<string> endings) {
     SCENE scene;
     if (affection > 5) {
         if(snmValue > (10/3) * 2){
-            scene.loadDescription("C:\\Users\\Cecel\\OneDrive\\Documents\\school\\Fall 2024\\CSE 310\\Module 1\\TextAdventure\\HaS.txt");}
+            scene.loadDescription(endings[2]);}
         else if (snmValue > 10/3){
-            scene.loadDescription("C:\\Users\\Cecel\\OneDrive\\Documents\\school\\Fall 2024\\CSE 310\\Module 1\\TextAdventure\\HaN.txt");}
+            scene.loadDescription(endings[1]);}
         else{
-            scene.loadDescription("C:\\Users\\Cecel\\OneDrive\\Documents\\school\\Fall 2024\\CSE 310\\Module 1\\TextAdventure\\HaM.txt");}}
+            scene.loadDescription(endings[0]);}}
     else{   
         if(snmValue > (10/3) * 2){
-            scene.loadDescription("C:\\Users\\Cecel\\OneDrive\\Documents\\school\\Fall 2024\\CSE 310\\Module 1\\TextAdventure\\LaS.txt");}
+            scene.loadDescription(endings[5]);}
         else if (snmValue > 10/3){
-            scene.loadDescription("C:\\Users\\Cecel\\OneDrive\\Documents\\school\\Fall 2024\\CSE 310\\Module 1\\TextAdventure\\LaN.txt");}
+            scene.loadDescription(endings[4]);}
         else{
-            scene.loadDescription("C:\\Users\\Cecel\\OneDrive\\Documents\\school\\Fall 2024\\CSE 310\\Module 1\\TextAdventure\\LaM.txt");}
+            scene.loadDescription(endings[3]);}
             }    
 }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------//
-vector<string> setUpDescriptorA()
+vector<string> setUpDescriptor(string filePath) //This saves the file locations listed in a file into a vector.
 {
-    vector<string> descriptorsA = {"C:\\Users\\Cecel\\OneDrive\\Documents\\school\\Fall 2024\\CSE 310\\Module 1\\TextAdventure\\Scene 1-1.txt", 
-    "C:\\Users\\Cecel\\OneDrive\\Documents\\school\\Fall 2024\\CSE 310\\Module 1\\TextAdventure\\Scene 2-1.txt",
-    "C:\\Users\\Cecel\\OneDrive\\Documents\\school\\Fall 2024\\CSE 310\\Module 1\\TextAdventure\\Scene 3-1.txt",
-    "C:\\Users\\Cecel\\OneDrive\\Documents\\school\\Fall 2024\\CSE 310\\Module 1\\TextAdventure\\Scene 4-1.txt",
-    "C:\\Users\\Cecel\\OneDrive\\Documents\\school\\Fall 2024\\CSE 310\\Module 1\\TextAdventure\\Scene 5-1.txt"};
-    return descriptorsA;
+    vector<string> descriptors;
+    fstream myFile;
+    myFile.open(filePath, ios::in); //read File
+    if(myFile.is_open()) {
+        string line;
+        while(getline(myFile, line)) {
+            descriptors.push_back(line);
+        }
+        myFile.close();
+    }
+    else {
+        cout << "Error opening file";
+    }
+    return descriptors;
 }
 
-vector<string> setUpDescriptorB()
-{
-    vector<string> descriptorsB = {"C:\\Users\\Cecel\\OneDrive\\Documents\\school\\Fall 2024\\CSE 310\\Module 1\\TextAdventure\\Scene 1-2.txt",
-    "C:\\Users\\Cecel\\OneDrive\\Documents\\school\\Fall 2024\\CSE 310\\Module 1\\TextAdventure\\Scene 2-2.txt",
-    "C:\\Users\\Cecel\\OneDrive\\Documents\\school\\Fall 2024\\CSE 310\\Module 1\\TextAdventure\\Scene 3-2.txt",
-    "C:\\Users\\Cecel\\OneDrive\\Documents\\school\\Fall 2024\\CSE 310\\Module 1\\TextAdventure\\Scene 4-2.txt",
-    "C:\\Users\\Cecel\\OneDrive\\Documents\\school\\Fall 2024\\CSE 310\\Module 1\\TextAdventure\\Scene 5-2.txt"};
-    return descriptorsB;
-}
-
+//This sets up order the two choices (the 2 option choice and the 3 option choice) appear in.
 vector<bool> setUpChoiceOrder()
 {
     vector<bool> choiceOrder = {false, true, true, true, false};
     return choiceOrder;
 }
 
+//These vectors determine the point value of each of the choices.
 vector<vector<int>> setUpChoiceValues(){
-    vector<vector<int>> choiceValues = {{1, 0, -1, 1, -1}, {0, -1, 1, 1,-1}, {-1, 1, 0, 1, -1}, {1, 0, -1, -1, 1}, {1, -1, 0, -1, 0}};
+    vector<vector<int>> choiceValues = {{-1, 0, 1, -1, 1}, {1, -1, 0, -1,1}, {1, -1, -1, 1, 0}, {-1, 1, 1, 0, -1}, {1, -1, 0, -1, 1}};
     return choiceValues;
 }
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------//
 
-void run(vector<string> descriptorsA, vector<string> descriptorsB, vector<bool> choiceOrders, vector<vector<int>> choiceValues){
+//This function runs each of the scenes for the game.
+void run(vector<string> descriptorsA, vector<string> descriptorsB, vector<string> descriptorsC, vector<bool> choiceOrders, vector<vector<int>> choiceValues, vector<string> endings, vector<string> decisions){
     PLAYER player;
-    vector<int> points = {0,0};
+    vector<int> points = {0,0}; //This is have the score tallied up in the end.
+    vector<string> choiceScenes; //This will hold the scene collections needed for the choices made in each section of the game. 
     for ( int i = 0; i < descriptorsA.size(); i++){
-        SCENE scene = setUpScene(descriptorsA[i], descriptorsB[i], choiceOrders[i], choiceValues[i]);
+        choiceScenes = setUpDescriptor(decisions[i]); //This will get the list of file locations for the scenes that come after the choices in this section of the game.
+        SCENE scene = setUpScene(descriptorsA[i], descriptorsB[i], descriptorsC[i], choiceOrders[i], choiceValues[i], choiceScenes);
         points = scene.run();
         player.alterValues(points);
     }
-    calculateEnding(player.affectionValue, player.snmValue);
+    calculateEnding(player.affectionValue, player.snmValue, endings);
 }
 
 
 int main() {
-    vector<string> descriptorsA = setUpDescriptorA();
-    vector<string> descriptorsB = setUpDescriptorB();
+    vector<string> descriptorsA = setUpDescriptor("C:\\Users\\Cecel\\OneDrive\\Documents\\school\\Fall 2024\\CSE 310\\Module 1\\TextAdventure\\SceneCollectionA.txt"); //This file holds the file locations for all of the A Scenes.
+    vector<string> descriptorsB = setUpDescriptor("C:\\Users\\Cecel\\OneDrive\\Documents\\school\\Fall 2024\\CSE 310\\Module 1\\TextAdventure\\SceneCollectionB.txt"); //This holds all the file locations for the B Scenes.
+    vector<string> descriptorsC = setUpDescriptor("C:\\Users\\Cecel\\OneDrive\\Documents\\school\\Fall 2024\\CSE 310\\Module 1\\TextAdventure\\SceneCollectionC.txt");
+    vector<string> endings = setUpDescriptor("C:\\Users\\Cecel\\OneDrive\\Documents\\school\\Fall 2024\\CSE 310\\Module 1\\TextAdventure\\LoadEnding.txt"); //This holds all the scenes for the endings.
+    vector<string> decisions = setUpDescriptor("C:\\Users\\Cecel\\OneDrive\\Documents\\school\\Fall 2024\\CSE 310\\Module 1\\TextAdventure\\DecisonScenes.txt"); //This holds all the file locations for the decision scenes.
     vector<bool> choiceOrders = setUpChoiceOrder();
     vector<vector<int>> choiceValues = setUpChoiceValues();
-    run(descriptorsA, descriptorsB, choiceOrders, choiceValues);
+    run(descriptorsA, descriptorsB, descriptorsC, choiceOrders, choiceValues, endings, decisions);
     return 0;
 }

@@ -1,0 +1,6 @@
+C:\Users\Cecel\OneDrive\Documents\school\Fall 2024\CSE 310\Module 1\TextAdventure\HaM.txt
+C:\Users\Cecel\OneDrive\Documents\school\Fall 2024\CSE 310\Module 1\TextAdventure\HaN.txt
+C:\Users\Cecel\OneDrive\Documents\school\Fall 2024\CSE 310\Module 1\TextAdventure\HaS.txt
+C:\Users\Cecel\OneDrive\Documents\school\Fall 2024\CSE 310\Module 1\TextAdventure\LaM.txt
+C:\Users\Cecel\OneDrive\Documents\school\Fall 2024\CSE 310\Module 1\TextAdventure\LaN.txt
+C:\Users\Cecel\OneDrive\Documents\school\Fall 2024\CSE 310\Module 1\TextAdventure\LaS.txt
